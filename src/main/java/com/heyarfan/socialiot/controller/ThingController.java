@@ -27,51 +27,50 @@ public class ThingController {
 
 	
 	@Autowired
-	private IThingService imageService;
+	private IThingService thingService;
 
 	
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	@ResponseBody
-	public ResponseEntity<Thing> createNewNews(@Valid Principal principal,
+	public ResponseEntity<Thing> addThing(@Valid Principal principal,
 
 
 			@RequestParam("title") String title, 
 			@RequestParam("description") String description, @RequestParam("imageId") long imageId) {
+				return null;
+		
+		
 		
 
-		if(hasPrivilege(WRITE_PRIVILEGE, userService.findUserByEmail(principal.getName()))) {
-			Image image = imageService.findById(imageId);
-			
-			GalleryImage galleryImage = galleryImageService.addGalleryImage(new GalleryImage(title, description, image));
-			
-			
-			return new ResponseEntity(galleryImage, HttpStatus.OK);
-		}else {
-			return new ResponseEntity("You do not have the permission to do so", HttpStatus.FORBIDDEN);
-		}
+//		if(hasPrivilege(WRITE_PRIVILEGE, userService.findUserByEmail(principal.getName()))) {
+//			Image image = imageService.findById(imageId);
+//			
+//			GalleryImage galleryImage = galleryImageService.addGalleryImage(new GalleryImage(title, description, image));
+//			
+//			
+//			return new ResponseEntity(galleryImage, HttpStatus.OK);
+//		}else {
+//			return new ResponseEntity("You do not have the permission to do so", HttpStatus.FORBIDDEN);
+//		}
 
 	}
 	
 	
-	
-	
-	
-
 	// returns lastest PAGE_SIZE number of galleryImag
-	@GetMapping("/")
-	public @ResponseBody Page<GalleryImage> showAllGalleryImage() {
-
-		Page<GalleryImage> galleryImageList = galleryImageService.findAllGalleryImage(0);
-		return galleryImageList;
-	}
+//	@GetMapping("/")
+//	public @ResponseBody Page<Thing> showAllGalleryImage() {
+//
+//		Page<Thing> galleryImageList = thingService.findAllGalleryImage(0);
+//		return galleryImageList;
+//	}
 
 	
 
 	@GetMapping("/id")
-	public @ResponseBody GalleryImage showGalleryImage(@RequestParam("id") Long id) {
+	public @ResponseBody Thing showGalleryImage(@RequestParam("id") Long id) {
 
-		GalleryImage galleryImage = galleryImageService.findById(id);
+		Thing galleryImage = thingService.findById(id);
 		if (galleryImage != null) {
 			return galleryImage;
 		} else {
