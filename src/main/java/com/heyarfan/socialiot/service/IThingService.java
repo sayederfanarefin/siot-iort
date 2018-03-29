@@ -10,7 +10,7 @@ public interface IThingService {
 
 	Thing findById(long id);
 
-	Thing findByParentId(long parentId);
+	
 
 	Thing findByName(String name);
 }

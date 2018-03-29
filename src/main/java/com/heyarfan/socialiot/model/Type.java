@@ -31,10 +31,10 @@ public class Type {
 	@Column(name = "created_at")
 	public Date createdAt;
 
-	@ManyToMany(mappedBy = "components")
-//    
-//	@ManyToMany
-//	@JoinTable(name = "components_types", joinColumns = @JoinColumn(name = "thing_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "tag_id", referencedColumnName = "id"))
+//	@ManyToMany(mappedBy = "components")
+    
+	@ManyToMany
+	@JoinTable(name = "components_types", joinColumns = @JoinColumn(name = "component_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "type_id", referencedColumnName = "id"))
 	private List<Component> components;
 	
 	
@@ -63,6 +63,25 @@ public class Type {
 	public Type(String name) {
 		super();
 		this.name = name;
+	}
+
+	public List<Component> getComponents() {
+		return components;
+	}
+
+	public void setComponents(List<Component> components) {
+		this.components = components;
+	}
+
+	public Type(String name, List<Component> components) {
+		super();
+		this.name = name;
+		this.components = components;
+	}
+
+	@Override
+	public String toString() {
+		return "Type [id=" + id + ", name=" + name + ", createdAt=" + createdAt + ", components=" + components + "]";
 	}
 
 	

@@ -36,11 +36,7 @@ public class ThingService implements IThingService {
 		return thingRepository.findById(id);
 	}
 
-	@Override
-	public Thing findByParentId(long parentId) {
-		// TODO Auto-generated method stub
-		return thingRepository.findByParentId(parentId);
-	}
+	
 
 	@Override
 	public Thing findByName(String name) {
