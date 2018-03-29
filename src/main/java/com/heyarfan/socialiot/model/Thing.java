@@ -17,11 +17,15 @@ import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @Table(name = "thing")
-public class Thing implements Serializable {
+public class Thing implements UserDetails {
+
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -31,7 +35,7 @@ public class Thing implements Serializable {
 	private String name;
 
 	@Column(nullable = false)
-	private long macAddress;
+	private String macAddress;
 
 	@Column(nullable = false)
 	private String publicKey;
@@ -83,11 +87,11 @@ public class Thing implements Serializable {
 		this.id = id;
 	}
 
-	public long getMacAddress() {
+	public String getMacAddress() {
 		return macAddress;
 	}
 
-	public void setMacAddress(long macAddress) {
+	public void setMacAddress(String macAddress) {
 		this.macAddress = macAddress;
 	}
 
@@ -115,7 +119,7 @@ public class Thing implements Serializable {
 		this.tags = tags;
 	}
 
-	public Thing(String name, long macAddress, String publicKey, List<SocialGroup> socilGroups, List<Tag> tags) {
+	public Thing(String name, String macAddress, String publicKey, List<SocialGroup> socilGroups, List<Tag> tags) {
 		super();
 		this.name = name;
 		this.macAddress = macAddress;
@@ -128,6 +132,63 @@ public class Thing implements Serializable {
 	public String toString() {
 		return "Thing [id=" + id + ", name=" + name + ", macAddress=" + macAddress + ", publicKey=" + publicKey
 				+ ", socilGroups=" + socilGroups + ", createdAt=" + createdAt + ", tags=" + tags + "]";
+	}
+
+	
+	
+	
+	
+	private boolean enabled;
+
+	private boolean accountNonExpired;
+
+	private boolean accountNonLocked;
+
+	private boolean credentialsNonExpired;
+	
+	
+	
+	
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getPassword() {
+		// TODO Auto-generated method stub
+		return this.getPublicKey();
+	}
+
+	@Override
+	public String getUsername() {
+		// TODO Auto-generated method stub
+		return this.getMacAddress();
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+		// TODO Auto-generated method stub
+		return this.isAccountNonExpired();
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		// TODO Auto-generated method stub
+		return this.isAccountNonLocked();
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		// TODO Auto-generated method stub
+		return this.isCredentialsNonExpired();
+	}
+
+	@Override
+	public boolean isEnabled() {
+		// TODO Auto-generated method stub
+		return this.isEnabled();
 	}
 
 }

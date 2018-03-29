@@ -1,8 +1,8 @@
-package com.heyarfan.socialiot.service;
+package com.heyarfan.socialiot.service.interfaces;
 
 import com.heyarfan.socialiot.model.Thing;
 
-public interface IThingService {
+public interface ITrackService {
 
 	Thing addThing(Thing thing);
 

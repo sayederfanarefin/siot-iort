@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.heyarfan.socialiot.model.Thing;
 import com.heyarfan.socialiot.repository.ThingRepository;
+import com.heyarfan.socialiot.service.interfaces.IThingService;
 
 
 @Service

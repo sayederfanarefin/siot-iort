@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.heyarfan.socialiot.model.Thing;
-import com.heyarfan.socialiot.service.IThingService;
+import com.heyarfan.socialiot.service.interfaces.IThingService;
 
 
 @RestController
