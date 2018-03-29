@@ -1,6 +1,5 @@
 package com.heyarfan.socialiot.model;
 
-
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -18,7 +17,6 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-
 @Entity
 @Table(name = "model")
 public class Model {
@@ -32,13 +30,12 @@ public class Model {
 	@Column(name = "created_at")
 	public Date createdAt;
 
-//	@ManyToMany(mappedBy = "components")
-    
+	// @ManyToMany(mappedBy = "components")
+
 	@ManyToMany
 	@JoinTable(name = "components_models", joinColumns = @JoinColumn(name = "component_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "model_id", referencedColumnName = "id"))
 	private List<Component> components;
-	
-	
+
 	@PrePersist
 	void createdAt() {
 		this.createdAt = new Date();
@@ -66,5 +63,4 @@ public class Model {
 		this.name = name;
 	}
 
-	
 }

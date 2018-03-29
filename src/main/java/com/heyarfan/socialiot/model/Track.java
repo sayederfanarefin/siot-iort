@@ -23,25 +23,19 @@ public class Track {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
-	@Column(columnDefinition = "LONGTEXT", nullable = false) 
+
+	@Column(columnDefinition = "LONGTEXT", nullable = false)
 	private String name;
-	
-	
-	
+
 	@Column(name = "created_at")
 	public Date createdAt;
-	
-	
+
 	public boolean isPublic;
-	
-	
+
 	@ManyToOne
 	@JoinTable(name = "action_track", joinColumns = @JoinColumn(name = "action_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "track_id", referencedColumnName = "id"))
 	private Action action;
-	
-	
-	
+
 	@PrePersist
 	void createdAt() {
 		this.createdAt = new Date();
@@ -92,7 +86,5 @@ public class Track {
 		return "Track [id=" + id + ", name=" + name + ", createdAt=" + createdAt + ", isPublic=" + isPublic
 				+ ", action=" + action + "]";
 	}
-	
-	
-	
+
 }

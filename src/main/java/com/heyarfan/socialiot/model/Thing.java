@@ -26,21 +26,21 @@ public class Thing implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
-	@Column(columnDefinition = "LONGTEXT", nullable = false) 
+
+	@Column(columnDefinition = "LONGTEXT", nullable = false)
 	private String name;
 
-	@Column(nullable = false) 
+	@Column(nullable = false)
 	private long macAddress;
-	
-	@Column(nullable = false) 
+
+	@Column(nullable = false)
 	private String publicKey;
 
-	@Column(nullable = false) 
+	@Column(nullable = false)
 	@OneToMany
 	@JoinTable(name = "things_social_group", joinColumns = @JoinColumn(name = "thing_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "social_group_id", referencedColumnName = "id"))
 	private List<SocialGroup> socilGroups;
-	
+
 	@Column(name = "created_at")
 	public Date createdAt;
 
@@ -67,8 +67,6 @@ public class Thing implements Serializable {
 
 	}
 
-	
-
 	public String getName() {
 		return name;
 	}
@@ -77,7 +75,6 @@ public class Thing implements Serializable {
 		this.name = name;
 	}
 
-	
 	public Long getId() {
 		return id;
 	}
@@ -133,5 +130,4 @@ public class Thing implements Serializable {
 				+ ", socilGroups=" + socilGroups + ", createdAt=" + createdAt + ", tags=" + tags + "]";
 	}
 
-	
 }

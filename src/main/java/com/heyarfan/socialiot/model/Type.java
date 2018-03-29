@@ -17,7 +17,6 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-
 @Entity
 @Table(name = "type")
 public class Type {
@@ -31,13 +30,12 @@ public class Type {
 	@Column(name = "created_at")
 	public Date createdAt;
 
-//	@ManyToMany(mappedBy = "components")
-    
+	// @ManyToMany(mappedBy = "components")
+
 	@ManyToMany
 	@JoinTable(name = "components_types", joinColumns = @JoinColumn(name = "component_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "type_id", referencedColumnName = "id"))
 	private List<Component> components;
-	
-	
+
 	@PrePersist
 	void createdAt() {
 		this.createdAt = new Date();
@@ -84,5 +82,4 @@ public class Type {
 		return "Type [id=" + id + ", name=" + name + ", createdAt=" + createdAt + ", components=" + components + "]";
 	}
 
-	
 }

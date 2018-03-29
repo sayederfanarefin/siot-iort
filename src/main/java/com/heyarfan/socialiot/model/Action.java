@@ -22,18 +22,16 @@ public class Action {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
-	@Column(columnDefinition = "LONGTEXT", nullable = false) 
+
+	@Column(columnDefinition = "LONGTEXT", nullable = false)
 	private String name;
 
-	
 	@Column(name = "created_at")
 	public Date createdAt;
-	
-	
-	@Column(columnDefinition = "LONGTEXT", nullable = false) 
+
+	@Column(columnDefinition = "LONGTEXT", nullable = false)
 	private String details;
-	
+
 	@Override
 	public String toString() {
 		return "Action [id=" + id + ", name=" + name + ", createdAt=" + createdAt + ", details=" + details + ", tracks="
@@ -58,8 +56,7 @@ public class Action {
 	@OneToMany
 	@JoinTable(name = "action_track", joinColumns = @JoinColumn(name = "action_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "track_id", referencedColumnName = "id"))
 	private List<Track> tracks;
-	
-	
+
 	@PrePersist
 	void createdAt() {
 		this.createdAt = new Date();
@@ -89,7 +86,5 @@ public class Action {
 	public void setTracks(List<Track> tracks) {
 		this.tracks = tracks;
 	}
-	
-	
-	
+
 }
