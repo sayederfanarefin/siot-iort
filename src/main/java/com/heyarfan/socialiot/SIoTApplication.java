@@ -15,6 +15,8 @@ public class SIoTApplication {
     UserDetailsService userDetailsService;
 	
 	
+	
+	
     @Autowired
     public void authenticationManager(AuthenticationManagerBuilder builder) throws Exception {
     	

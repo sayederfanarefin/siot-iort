@@ -10,7 +10,7 @@ public interface IThingService {
 
 	Thing findById(long id);
 
-	
+	public void saveRegisteredThing(final Thing thing) ;
 
 	Thing findByName(String name);
 }

@@ -11,4 +11,5 @@ public interface ThingRepository extends JpaRepository<Thing, Long> {
     
     Thing findByName(String name);
     
+    Thing findByMacAddress(String mac);
 }

@@ -44,6 +44,14 @@ public class Thing implements UserDetails {
 	@OneToMany
 	@JoinTable(name = "things_social_group", joinColumns = @JoinColumn(name = "thing_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "social_group_id", referencedColumnName = "id"))
 	private List<SocialGroup> socilGroups;
+	
+	
+	
+	@Column(nullable = false)
+	@OneToMany
+	@JoinTable(name = "things_components", joinColumns = @JoinColumn(name = "thing_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "component_id", referencedColumnName = "id"))
+	private List<Component> components;
+	
 
 	@Column(name = "created_at")
 	public Date createdAt;

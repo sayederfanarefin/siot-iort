@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 
@@ -41,6 +42,15 @@ public class Component {
 	@ManyToMany
 	@JoinTable(name = "components_models", joinColumns = @JoinColumn(name = "component_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "model_id", referencedColumnName = "id"))
 	public List<Model> models;
+	
+	
+	
+	@Column(nullable = false)
+	@OneToMany
+	@JoinTable(name = "component_track", joinColumns = @JoinColumn(name = "component_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "track_id", referencedColumnName = "id"))
+	private List<Component> components;
+	
+	
 	
 	@PrePersist
 	void createdAt() {
