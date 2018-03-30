@@ -2,7 +2,7 @@ package com.heyarfan.socialiot.service.interfaces;
 
 import com.heyarfan.socialiot.model.Thing;
 
-public interface IThingType {
+public interface ITypeService {
 
 	Thing addThing(Thing thing);
 

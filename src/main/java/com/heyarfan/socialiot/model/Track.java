@@ -14,10 +14,15 @@ import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.TypeDef;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
+
+
 
 @Entity
 @Table(name = "track")
+
 public class Track {
 
 	@Id
@@ -35,6 +40,19 @@ public class Track {
 	@ManyToOne
 	@JoinTable(name = "action_track", joinColumns = @JoinColumn(name = "action_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "track_id", referencedColumnName = "id"))
 	private Action action;
+
+	
+	@Column(columnDefinition = "LONGTEXT", nullable = false)
+    private String data;
+	
+	
+	public String getData() {
+		return data;
+	}
+
+	public void setData(String data) {
+		this.data = data;
+	}
 
 	@PrePersist
 	void createdAt() {

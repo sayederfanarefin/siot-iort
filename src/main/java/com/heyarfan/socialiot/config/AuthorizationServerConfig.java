@@ -58,8 +58,8 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                 .authorities("ROLE_CLIENT", "ROLE_ANDROID_CLIENT")
                 .scopes("read", "write", "trust")
                 .resourceIds("oauth2-resource")
-                .accessTokenValiditySeconds(2400)
-                .secret("android-secret").refreshTokenValiditySeconds(3600);
+                .accessTokenValiditySeconds(604800)
+                .secret("android-secret").refreshTokenValiditySeconds(6048000);
     }
 
     @Override
